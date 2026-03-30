@@ -3,10 +3,12 @@ const router = express.Router();
 const { Course, Category, User, Chapter } = require('../../models');
 const { Op } = require('sequelize');
 const {
-    NotFoundError,
     success,
     failure,
-} = require('../../utils/response');
+} = require('../../utils/responses');
+const {
+    NotFoundError,
+} = require('../../utils/errors');
 
 /**
  * 公共方法：关联分类、用户数据

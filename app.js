@@ -4,6 +4,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+require('dotenv').config();
+
+
 var indexRouter = require('./routes/index');
 const articleRouter = require('./routes/admin/articles');
 const categoryRouter = require('./routes/admin/categorys');
@@ -11,6 +14,8 @@ const settingRouter = require('./routes/admin/settings');
 const userRouter = require('./routes/admin/users');
 const courseRouter = require('./routes/admin/courses');
 const chapterRouter = require('./routes/admin/chapters');
+const chartRouter = require('./routes/admin/charts');
+const authRouter = require('./routes/admin/auth');
 
 var app = express();
 
@@ -31,5 +36,7 @@ app.use('/admin/settings', settingRouter);
 app.use('/admin/users', userRouter);
 app.use('/admin/courses', courseRouter);
 app.use('/admin/chapters', chapterRouter);
+app.use('/admin/charts', chartRouter);
+app.use('/admin/auth', authRouter);
 
 module.exports = app;

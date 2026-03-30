@@ -3,10 +3,12 @@ const router = express.Router();
 const { Article } = require('../../models');
 const { Op } = require('sequelize');
 const {
-    NotFoundError,
     success,
     failure,
-} = require('../../utils/response');
+} = require('../../utils/responses');
+const {
+    NotFoundError,
+} = require('../../utils/errors');
 
 /**
  * 公共方法：查询当前文章

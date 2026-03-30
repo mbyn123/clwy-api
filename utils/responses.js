@@ -1,12 +1,4 @@
-/**
- * 自定义 404 错误类
- */
-class NotFoundError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'NotFoundError';
-  }
-}
+
 /**
  * 请求成功
  * @param res
@@ -53,7 +45,6 @@ function failure(res, error) {
 }
 
 module.exports = {
-  NotFoundError,
   success,
   failure
 }
