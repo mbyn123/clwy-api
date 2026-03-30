@@ -53,7 +53,7 @@ async function getCourse(req) {
 function whitelist(req) {
     return {
         categoryId: req.body.categoryId,
-        userId: req.body.userId,
+        userId: req.user.id,
         name: req.body.name,
         image: req.body.image,
         recommended: req.body.recommended,

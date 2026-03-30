@@ -59,7 +59,11 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
       validate: {
-        isUrl: { msg: '图片地址不正确。' }
+        isUrlOrEmpty(value) {
+          if (value && value.length > 0 && !/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i.test(value)) {
+            throw new Error('图片地址不正确。');
+          }
+        }
       }
     },
     recommended: {

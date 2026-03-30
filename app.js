@@ -4,18 +4,19 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
+const adminAuth = require('./middlewares/admin-auth');
 require('dotenv').config();
 
 
 var indexRouter = require('./routes/index');
-const articleRouter = require('./routes/admin/articles');
-const categoryRouter = require('./routes/admin/categorys');
-const settingRouter = require('./routes/admin/settings');
-const userRouter = require('./routes/admin/users');
-const courseRouter = require('./routes/admin/courses');
-const chapterRouter = require('./routes/admin/chapters');
-const chartRouter = require('./routes/admin/charts');
-const authRouter = require('./routes/admin/auth');
+const adminArticleRouter = require('./routes/admin/articles');
+const adminCategoryRouter = require('./routes/admin/categorys');
+const adminSettingRouter = require('./routes/admin/settings');
+const adminUserRouter = require('./routes/admin/users');
+const adminCourseRouter = require('./routes/admin/courses');
+const adminChapterRouter = require('./routes/admin/chapters');
+const adminChartRouter = require('./routes/admin/charts');
+const adminAuthRouter = require('./routes/admin/auth');
 
 var app = express();
 
@@ -30,13 +31,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/admin/articles', articleRouter);
-app.use('/admin/categorys', categoryRouter);
-app.use('/admin/settings', settingRouter);
-app.use('/admin/users', userRouter);
-app.use('/admin/courses', courseRouter);
-app.use('/admin/chapters', chapterRouter);
-app.use('/admin/charts', chartRouter);
-app.use('/admin/auth', authRouter);
+app.use('/admin/articles', adminAuth, adminArticleRouter);
+app.use('/admin/categorys', adminAuth, adminCategoryRouter);
+app.use('/admin/settings', adminAuth, adminSettingRouter);
+app.use('/admin/users', adminAuth, adminUserRouter);
+app.use('/admin/courses', adminAuth, adminCourseRouter);
+app.use('/admin/chapters', adminAuth, adminChapterRouter);
+app.use('/admin/charts', adminAuth, adminChartRouter);
+app.use('/admin/auth', adminAuthRouter);
 
 module.exports = app;
