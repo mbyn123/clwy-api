@@ -27,6 +27,7 @@ const articlesRouter = require('./routes/articles');
 const settingsRouter = require('./routes/settings');
 const searchRouter = require('./routes/search');
 const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/users');
 
 var app = express();
 
@@ -57,6 +58,7 @@ app.use('/articles', userAuth, articlesRouter);
 app.use('/settings', userAuth, settingsRouter);
 app.use('/search', userAuth, searchRouter);
 app.use('/auth', authRouter);
+app.use('/users', userAuth, usersRouter);
 
 
 
