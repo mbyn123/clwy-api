@@ -7,6 +7,13 @@ const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
+
+// 允许通过环境变量覆盖配置，方便 Docker 部署
+if (process.env.DB_HOST) config.host = process.env.DB_HOST;
+if (process.env.DB_USER) config.username = process.env.DB_USER;
+if (process.env.DB_PASSWORD) config.password = process.env.DB_PASSWORD;
+if (process.env.DB_NAME) config.database = process.env.DB_NAME;
+
 const db = {};
 
 let sequelize;

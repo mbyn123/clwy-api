@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "db:migrate": "sequelize-cli db:migrate",
+    "docker:start": "npx sequelize-cli db:migrate && node ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
@@ -17,6 +19,7 @@
     "morgan": "~1.9.1",
     "mysql2": "^3.20.0",
     "nodemon": "^3.1.14",
-    "sequelize": "^6.37.8"
+    "sequelize": "^6.37.8",
+    "sequelize-cli": "^6.6.2"
   }
 }

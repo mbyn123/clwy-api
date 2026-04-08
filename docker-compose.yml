@@ -1,15 +1,40 @@
 services:
   mysql:
     image: mysql:8.3.0
+    container_name: clwy-mysql
     command:
       --default-authentication-plugin=mysql_native_password
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_general_ci
     environment:
       - MYSQL_ROOT_PASSWORD=clwy1234
+      - MYSQL_DATABASE=clwy_api_dev
       - MYSQL_LOWER_CASE_TABLE_NAMES=0
     ports:
       - "3306:3306"
     volumes:
       - ./data/mysql:/var/lib/mysql
+    networks:
+      - clwy-network
+
+  app:
+    build: .
+    container_name: clwy-app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=clwy1234
+      - DB_NAME=clwy_api_dev
+      - SECRET=clwy_secret_key # 建议在 .env 中设置
+    depends_on:
+      - mysql
+    networks:
+      - clwy-network
+
+networks:
+  clwy-network:
+    driver: bridge
  
