@@ -50,13 +50,13 @@ app.use('/admin/chapters', adminAuth, adminChapterRouter);
 app.use('/admin/charts', adminAuth, adminChartRouter);
 app.use('/admin/auth', adminAuthRouter);
 
-app.use('/home', userAuth, homeRouter);
-app.use('/categories', userAuth, categoriesRouter);
-app.use('/courses', userAuth, coursesRouter);
-app.use('/chapters', userAuth, chaptersRouter);
-app.use('/articles', userAuth, articlesRouter);
-app.use('/settings', userAuth, settingsRouter);
-app.use('/search', userAuth, searchRouter);
+app.use('/home', homeRouter);
+app.use('/categories', categoriesRouter);
+app.use('/courses', coursesRouter);
+app.use('/chapters', chaptersRouter);
+app.use('/articles', articlesRouter);
+app.use('/settings', settingsRouter);
+app.use('/search', searchRouter);
 app.use('/auth', authRouter);
 app.use('/users', userAuth, usersRouter);
 
